@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Component</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+ <div id="main" class="container">
+   <div class="row">
+         <div class="col-sm-4">
+           <h1>Albums</h1>
+            <common-list v-bind:lists="albums"></common-list>
+         </div>
+         <div class="col-sm-4">
+           <h1>Posts</h1>
+            <common-list v-bind:lists="posts"></common-list>
+         </div>
+        <div class="col-sm-12">
+           <h1>Json</h1>
+           <pre>
+             {{ $data }}
+           </pre>
+        </div>
+   </div>
+ </div>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+<script type="text/javascript">
+Vue.component ('common-list',
+  {
+    props: ['lists'],
+    template: `<ul class = "list-group">
+                <li v-for="item in lists" class="list-group-item">
+                 {{item.title}}
+                </li>
+               </ul>`,
+});
+
+ var urlPosts = 'https://jsonplaceholder.typicode.com/posts';
+ var urlAlbums = 'https://jsonplaceholder.typicode.com/albums';
+ new Vue({
+          el: '#main',
+          created: function()
+           {
+              this.getPosts(),
+              this.getAlbums()
+           },
+          data:
+           {
+              posts:[],
+              albums:[],
+           },
+          methods:
+           {
+             getPosts: function()
+               {
+                 axios.get(urlPosts).then(response=>{
+                 this.posts = response.data
+                });
+               },
+             getAlbums: function()
+               {
+                 axios.get(urlAlbums).then(response=>{
+                 this.albums = response.data
+                });
+               }
+          }
+	    });
+</script>
+</body>
+</html>

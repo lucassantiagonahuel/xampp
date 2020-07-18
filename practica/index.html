@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="UTF-8">
+	<title>PROYECTO CUARENTENA</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+</head>
+
+
+<body>
+	<div id="appVue">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6">
+				<h1 v-if="lists.length > 0">Agregar Tarea</h1>
+				<h1 v-else="lists">Crear una Tarea</h1>
+				<input type="text" class="form-control" v-model="newKeep" v-on:keyup.enter="addKeep">
+			</div>
+			
+
+			<div class="col-sm-6">
+				<h1 v-if="lists.length > 0">Lista de Tareas</h1>
+				<h1 v-else="lists"> No hay tareas registradas </h1>
+				<ul class="list-group">
+					<li class="list-group-item"
+						v-for="item in lists"
+						v-bind:class="item.completed == true ? 'disabled' : ''"
+						@click="item.completed = ! item.completed">
+						{{ item.keep }}
+					</li>
+				</ul>	
+			</div>
+		</div>
+
+			
+			<div class="row">
+				<div class="col-xs-12">
+					<hr>
+					<pre>
+						{{ $data | json }}
+					</pre>
+				</div>	
+			</div>
+	</div>	
+</div>
+ 
+ <script src="vue.js"></script>
+ <script src="script.js"></script>
+</body>
+
+
+</html>

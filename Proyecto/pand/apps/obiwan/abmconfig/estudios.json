@@ -1,0 +1,14 @@
+{
+    "gral":{
+        "url_list":"/getListaEstudios",
+        "rpp": 50
+    },
+    "vista":{
+        "titulo": "Listado de estudios realizados",
+        "headers": ["Nº","Paciente","DNI","Tipo","Fecha","Acciones"],
+        "campos": ["id","pais","provincia","nombre","codigo_postal"],
+        "orden": "nombre DESC",
+        "firstIsId": true,
+        "showNewButton": false
+    }
+}

@@ -1,0 +1,18 @@
+[
+	{
+		"name":"Confederación Argentina de deportes acuáticos",
+		"path":"cadda",
+		"url":{
+			"dev":"cadda.local/",
+			"prod":"caddatest.dariomartinelli.com/"
+		}
+	},
+	{
+		"name":"Confederación Argentina de deportes acuáticos",
+		"path":"obiwan",
+		"url":{
+			"dev":"obiwan.local/",
+			"prod":"obiwan.dariomartinelli.com/"
+		}
+	}
+]

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>v-if</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+<div id="main">
+    <div class="container">
+      <div class="row">
+     	 <div class="col-md-5">
+           <template v-if="mesagge">
+             <h3>Escribe tu sugerencia</h3>
+             <p>El equipo responde en 24 horas</p>
+             <p><em>Podes comunicarte por twitter</em></p>
+           </template>
+           <h3 v-else="!mesagge">Presiona ENTER para enviar</h3>
+           <textarea v-model="mesagge" class="form-control"></textarea>
+    	 </div>
+         <div class="col-md-7">
+          <h3>json</h3>
+          <pre>{{$data}}</pre>
+    	 </div>
+     </div>
+    </div>
+  </div>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.js"></script>
+<script type="text/javascript">
+new Vue({
+          el: '#main',
+          data:{
+              mesagge:''
+          }
+	          });
+</script>
+</body>
+</html>

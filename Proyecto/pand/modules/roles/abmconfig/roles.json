@@ -1,0 +1,40 @@
+{
+    "gral":{
+        "url_list":"/admin/roles/getList",
+        "url_set":"/admin/roles/set",
+        "url_get":"/admin/roles/get",
+        "rpp": 50
+    },
+    "vista":{
+        "titulo": "Listado de roles",
+        "headers": ["Nº","Rol","Hereda de","Acciones"],
+        "campos": ["id","name", "parent"],
+        "removeButton": true,
+        "editButton": true,
+        "firstIsId": true,
+        "showNewButton": true
+    },
+    "modelo":{
+        "tabla": "auth_roles",
+        "campos": ["id","name","active"],
+        "where": "active = 1",
+        "customListQuery": "select r.id, r.name, coalesce(p.name, '') as parent from auth_roles r left join auth_roles p on r.parent_id = p.id where r.active = 1"
+    },
+    "formAlta":{
+        "titulo": "Crear/modificar rol",
+        "tipo": "fancy",
+        "campos":[
+            {
+                "tipo": "text",
+                "label": "Ingrese el nombre del rol",
+                "name": "name"
+            },
+            {
+                "tipo": "select",
+                "label": "Hereda de",
+                "name": "parent_id"
+            }
+        ],
+        "load_options": "/admin/roles/loadOptions/parent_id"
+    }
+}

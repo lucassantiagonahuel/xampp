@@ -1,0 +1,42 @@
+{
+    "gral":{
+        "url_list":"/admin/regional/provincias/getList",
+        "url_set":"/admin/regional/provincias/set",
+        "url_get":"/admin/regional/provincias/get",
+        "rpp": 50
+    },
+    "vista":{
+        "titulo": "Listado de provincias",
+        "headers": ["Nº","País","Provincia","Acciones"],
+        "campos": ["id","pais","nombre"],
+        "orden": "nombre DESC",
+        "removeButton": true,
+        "editButton": true,
+        "firstIsId": true,
+        "showNewButton": true
+    },
+    "modelo":{
+        "tabla": "global_provincias",
+        "campos": ["id","nombre","pais_id","active"],
+        "whereOld": "active = 1",
+        "customListQuery": "select prov.id, prov.nombre, p.nombre as pais from global_provincias prov left join global_paises p on prov.pais_id = p.id and p.active = 1 where prov.active = 1"
+    },
+    "formAlta":{
+        "titulo": "Crear/modificar provincia",
+        "tipo": "fancy",
+        "campos":[
+            {
+                "tipo": "text",
+                "label": "Ingrese el nombre del país",
+                "required": true,
+                "name": "nombre"
+            },
+            {
+                "tipo": "select",
+                "label": "Seleccione el país",
+                "required": true,
+                "name": "pais_id"
+            }
+        ]
+    }
+}

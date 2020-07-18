@@ -1,0 +1,34 @@
+{
+    "gral":{
+        "url_list":"/admin/regional/paises/getList",
+        "url_set":"/admin/regional/paises/set",
+        "url_get":"/admin/regional/paises/get",
+        "rpp": 50
+    },
+    "vista":{
+        "titulo": "Listado de paises",
+        "headers": ["Nº","País","Acciones"],
+        "campos": ["id","nombre"],
+        "removeButton": true,
+        "editButton": true,
+        "firstIsId": true,
+        "showNewButton": true
+    },
+    "modelo":{
+        "tabla": "global_paises",
+        "campos": ["id","nombre","active"],
+        "where": "active = 1"
+    },
+    "formAlta":{
+        "titulo": "Crear/modificar país",
+        "tipo": "fancy",
+        "campos":[
+            {
+                "tipo": "text",
+                "label": "Ingrese el nombre del país",
+                "required": true,
+                "name": "nombre"
+            }
+        ]
+    }
+}

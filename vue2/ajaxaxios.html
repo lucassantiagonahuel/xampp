@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Ajax</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+ <div id="main" class="container">
+   <div class="row">
+         <div class="col-sm-4">
+           <h1>Lista vue-ajax</h1>
+             <ul class="list-group">
+               <li v-for="item in lists" class="list-group-item">
+                 {{item.name}}
+               </li>
+             </ul>
+         </div>
+         <div class="col-sm-8">
+           <h1>Json</h1>
+           <pre>{{$data|json}}</pre>
+         </div>
+   </div>
+ </div>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+<script type="text/javascript">
+ //var urlUsers='https://randomuser.me/api/?results=10';
+ var urlUsers='https://jsonplaceholder.typicode.com/users'
+ new Vue({
+          el: '#main',
+          created:function()
+          {
+             this.getUsers();
+          },
+          data:
+          {
+             lists:[]
+          },
+          methods:
+          {
+            getUsers: function()
+              {
+                axios.get(urlUsers).then(response=>{
+                  this.lists = response.data
+                });
+              }
+          }
+	    });
+</script>
+</body>
+</html>

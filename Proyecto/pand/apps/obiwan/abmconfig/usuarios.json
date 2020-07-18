@@ -1,0 +1,89 @@
+{
+    "gral":{
+        "url_list":"/users/getList",
+        "url_set":"/users/set",
+        "url_get":"/users/get",
+        "rpp": 50
+    },
+    "vista":{
+        "titulo": "Listado de usuarios",
+        "headers": ["Nº","Nombre","Apellido","Email","Teléfono","Nivel","Acciones"],
+        "campos": ["id","nombre","apellido","email","telefono","level"],
+        "removeButton": true,
+        "editButton": true,
+        "firstIsId": true,
+        "showNewButton": true
+    },
+    "modelo":{
+        "tabla": "core_users",
+        "campos": ["id","username","email","nombre","apellido","dni","telefono","domicilio","password","level","active"],
+        "required": {
+            "username":"nombre de usuario",
+            "email":"correo electrónico"
+        },
+        "unique": {
+            "username":"nombre de usuario",
+            "email":"correo electrónico"
+        },
+        "where": "active = 1"
+    },
+    "formAlta":{
+        "titulo": "Crear/modificar usuarios",
+        "tipo": "fancy",
+        "campos":[
+            {
+                "tipo": "text",
+                "label": "Ingrese el nombre de usuario para acceder",
+                "required": true,
+                "name": "username",
+                "unique": "true",
+                "width": "col-6"
+            },
+            {
+                "tipo": "number",
+                "label": "Ingrese el DNI",
+                "name": "dni",
+                "min": "99999",
+                "max": "99999999",
+                "step": "1",
+                "width": "col-6"
+            },
+            {
+                "tipo": "text",
+                "label": "Ingrese el Nombre",
+                "name": "nombre",
+                "width": "col-6"
+            },
+            {
+                "tipo": "text",
+                "label": "Ingrese el apellido",
+                "name": "apellido",
+                "width": "col-6"
+            },
+            {
+                "tipo": "text",
+                "label": "Ingrese el correo electrónico",
+                "required": true,
+                "name": "email"
+            },
+            {
+                "tipo": "text",
+                "label": "Ingrese el teléfono",
+                "required": true,
+                "name": "telefono",
+                "width": "col-6"
+            },
+            {
+                "tipo": "text",
+                "label": "Ingrese el domicilio postal",
+                "name": "domicilio",
+                "width": "col-6"
+            },
+            {
+                "tipo": "select",
+                "label": "Nivel de acceso",
+                "name": "level"
+            }
+        ]
+    }
+}

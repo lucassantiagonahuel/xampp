@@ -1,0 +1,52 @@
+{
+    "gral":{
+        "url_list":"/admin/regional/ciudades/getList",
+        "url_set":"/admin/regional/ciudades/set",
+        "url_get":"/admin/regional/ciudades/get",
+        "rpp": 50
+    },
+    "vista":{
+        "titulo": "Listado de ciudades",
+        "headers": ["Nº","País","Provincia","Ciudad","Cod. Postal","Acciones"],
+        "campos": ["id","pais","provincia","nombre","codigo_postal"],
+        "orden": "nombre DESC",
+        "removeButton": true,
+        "editButton": true,
+        "firstIsId": true,
+        "showNewButton": true
+    },
+    "modelo":{
+        "tabla": "global_ciudades",
+        "campos": ["id","nombre","pais_id","provincia_id","codigo_postal","active"],
+        "whereOld": "active = 1",
+        "customListQuery": "select c.id, c.nombre, c.codigo_postal, prov.nombre as provincia, p.nombre as pais from global_ciudades c left join global_provincias prov on c.provincia_id = prov.id left join global_paises p on c.pais_id = p.id and p.active = 1 where prov.active = 1"
+    },
+    "formAlta":{
+        "titulo": "Crear/modificar ciudad",
+        "tipo": "fancy",
+        "campos":[
+            {
+                "tipo": "text",
+                "label": "Ingrese el nombre de la ciudad",
+                "required": true,
+                "name": "nombre"
+            },
+            {
+                "tipo": "text",
+                "label": "Ingrese el código postal",
+                "required": true,
+                "name": "codigo_postal"
+            },
+            {
+                "tipo": "select",
+                "label": "Seleccione el país",
+                "name": "pais_id"
+            },
+            {
+                "tipo": "select",
+                "label": "Seleccione la provincia",
+                "name": "provincia_id"
+            }
+        ]
+    }
+}

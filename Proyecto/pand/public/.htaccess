@@ -1,0 +1,12 @@
+Options -Indexes
+IndexIgnore *
+
+RewriteEngine on
+# RewriteBase /
+
+RewriteCond %{REQUEST_URI} !\.(gif|jpe?g|png|css|js|ico)$ [NC]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+# RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule ^(.*)$ index.php?pand_request=$1 [L,QSA]

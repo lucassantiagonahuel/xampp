@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title> PROYECTO 2O2O </title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+</head>
+<body>
+  <div id="appVue">
+   <div class="container">
+      <div class="row">
+        <div class="col-sm-6">
+             <h1 v-if="lists.length > 0 "><font color="F0042B"> Agregar una tarea </font></h1>
+             <h1 v-else="lists"><font color="#16A085"> Crear una tarea </font></h1>
+              <input type="text" class="form-control" v-model="newKeep" v-on:keyup.enter="addKeep" autofocus>
+              <button class="btn btn-primary" @click="addKeep" > Agregar </button>
+              <button  class="btn btn-warning" @click="editarKeep(newKeep)"> Editar </button>
+      </div>
+          <div id="ocultar" class="col-sm-6" >
+           <h1 v-if="lists.length> 0 "><font color="F0042B"> Lista de tareas </font></h1>
+           <h1 v-else="lists"><font color="#16A085"> No hay tareas registradas </font></h1>
+            <ul class="list-group" v-if="mostrarlist == true">
+               <li class="list-group-item"
+                 v-for="(item,index) in lists"
+                 v-bind:class="item.completed == true ? 'text-info' : '' ">
+                 <font size="5" > {{ item.keep }} </font>
+                  <button class="btn btn-info" @click="newKeep=item.keep;indice=index"> Cargar </button>
+                  <button type ="button"class="btn btn-danger" @click="item.completed = ! item.completed"> Realizado </button>
+               </li>
+            </ul>
+          </div>
+          <button class="btn btn-link" @click="ocultarlist()"> Mostrar/Ocultar </button>
+     </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <hr>
+           <pre>
+           <font color="red"> {{ $data  }}</font>
+           </pre>
+        </div>
+      </div>
+   </div>
+  </div>
+  <script src="vue.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

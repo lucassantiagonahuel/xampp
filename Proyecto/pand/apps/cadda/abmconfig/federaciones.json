@@ -1,0 +1,66 @@
+{
+    "gral":{
+        "url_list":"/admin/federaciones/getList",
+        "url_set":"/admin/federaciones/set",
+        "url_get":"/admin/federaciones/get",
+        "rpp": 50
+    },
+    "vista":{
+        "titulo": "Listado de federaciones",
+        "headers": ["Nº","Federación","Email","Teléfono","Web","Acciones"],
+        "campos": ["id","nombre","email","telefono","web"],
+        "removeButton": true,
+        "editButton": true,
+        "firstIsId": true,
+        "showNewButton": true
+    },
+    "modelo":{
+        "tabla": "cadda_federaciones",
+        "campos": ["id","nombre","email","telefono","direccion","provincia_id","ciudad_id","logo","web","active"],
+        "where": "active = 1"
+    },
+    "formAlta":{
+        "titulo": "Crear/modificar federación",
+        "tipo": "fancy",
+        "campos":[
+            {
+                "tipo": "text",
+                "label": "Ingrese el nombre de la federación",
+                "required": true,
+                "name": "nombre"
+            },
+            {
+                "tipo": "text",
+                "label": "Ingrese el correo electrónico",
+                "required": true,
+                "name": "email"
+            },
+            {
+                "tipo": "text",
+                "label": "Ingrese el teléfono",
+                "required": true,
+                "name": "telefono"
+            },
+            {
+                "tipo": "text",
+                "label": "Ingrese el domicilio postal",
+                "name": "domicilio"
+            },
+            {
+                "tipo": "text",
+                "label": "Ingrese el sitio web",
+                "name": "web"
+            },
+            {
+                "tipo": "select",
+                "label": "Ingrese la provincia",
+                "name": "provincia_id"
+            },
+            {
+                "tipo": "text",
+                "label": "Ingrese la ciudad",
+                "name": "ciudad_id"
+            }
+        ]
+    }
+}

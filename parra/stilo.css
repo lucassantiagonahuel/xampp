@@ -1,0 +1,12 @@
+.oculto { display: none; }
+.visible { display: inline; }
+.prueba{
+    width:150px;
+    height:60px; 
+    border:thin solid silver
+}
+.prueba2{
+    width:150px;
+    height:60px; 
+    border:thin solid black
+}

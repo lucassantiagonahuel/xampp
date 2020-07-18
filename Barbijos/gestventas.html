@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Barbijos </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/propio.css">
+</head>
+<body class="Body1">
+
+	<div id="app">
+        <div class="btn-container">
+        <a class="btn-ghost pink primary round" href="index.html">INICIO</a>
+        <a class="btn-ghost pink primary round" href="agregarVenta.html">NUEVA VENTA</a>
+        </div>
+		 <table id="main-container">
+            <thead>
+              <tr>
+                <th> Nombre </th>
+                <th> Direccion </th>
+                <th> Cantidad </th>
+                <th> Color </th>
+                <th> Fecha </th>
+                <tr v-for="barbijo in barbijos">
+                    <td>{{barbijo.nombre}}</td>
+                    <td>{{barbijo.direccion}}</td>
+                    <td>{{barbijo.cantidad}}</td>
+                    <td>{{barbijo.color}}</td>
+                    <td>{{barbijo.fecha}}</td>
+                </tr>
+
+          </thead>
+
+
+</div>
+
+ 	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script>
+    	var app = new Vue({
+    		el: '#app',
+    		data: {
+    			barbijos: [],
+    			cantidad: "",
+                nombre: "",
+                direccion: "",
+                color: "",
+                fecha:""
+    		},
+    		methods:{
+    			mostrarVentas: function(){
+                    const self = this;
+
+                    axios.get('http://localhost/Barbijos/servidor.php')
+                    .then(function (response) {
+                          self.barbijos = response.data
+                    })
+
+                },
+            },
+            mounted: function(){
+                this.mostrarVentas();
+            },
+    	});
+
+</script>
+
+</body>
+</html>

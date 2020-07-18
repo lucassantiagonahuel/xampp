@@ -1,0 +1,49 @@
+{
+    "gral":{
+        "url_list":"/admin/equipos/getList",
+        "url_set":"/admin/equipos/set",
+        "url_get":"/admin/equipos/get",
+        "rpp": 50
+    },
+    "vista":{
+        "titulo": "Listado de equipos",
+        "headers": ["Nº","Equipo","Federación","Acciones"],
+        "campos": ["id","nombre","federacion"],
+        "removeButton": true,
+        "editButton": true,
+        "actionsold": [
+            {
+                "icon": "fa fa-eye",
+                "class": " bg-blue",
+                "name": " Ver",
+                "href": "/admin/equipos/detalle/"
+            }
+        ],
+        "firstIsId": true,
+        "showNewButton": true
+    },
+    "modelo":{
+        "tabla": "cadda_equipos",
+        "campos": ["id","nombre","federacion_id","active"],
+        "where": "active = 1",
+        "customListQuery": "select e.*, f.nombre as federacion from cadda_equipos e left join cadda_federaciones f on e.federacion_id = f.id and f.active = 1 where e.active = 1"
+    },
+    "formAlta":{
+        "titulo": "Crear/modificar equipo",
+        "tipo": "fancy",
+        "campos":[
+            {
+                "tipo": "text",
+                "label": "Ingrese el nombre del equipo",
+                "required": true,
+                "name": "nombre"
+            },
+            {
+                "tipo": "select",
+                "label": "Seleccione la federación",
+                "required": true,
+                "name": "federacion_id"
+            }
+        ]
+    }
+}

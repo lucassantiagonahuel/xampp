@@ -1,0 +1,33 @@
+/* Sticky footer styles */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 15px;
+}
+
+#nav_ppal{
+    background-color: #fff;
+    -webkit-box-shadow: 0px 8px 10px 0px #ACACAC;
+    box-shadow: 0px 8px 10px 0px #ACACAC;
+    margin-bottom: 20px;
+}
+
+.navbar-brand{}
+.navbar-brand img{
+    width: 50px;
+    height: 45px;
+}
+
+.md-form label.active{
+    -webkit-transform: translateY(-22px) scale(0.8) !important;
+    transform: translateY(-22px) scale(0.8) !important;
+}
